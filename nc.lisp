@@ -46,7 +46,20 @@ name, forward declaration and function code into *boiler-func*"
 	 ,@body)))
 
 (use-variables NULL
-	       )
+	       bool
+	       TRUE
+	       FALSE
+	       ERR
+	       OK
+	       COLOR_RED
+	       COLOR_GREEN
+	       COLOR_YELLOW
+	       COLOR_BLUE
+	       COLOR_CYAN
+	       COLOR_MAGENTA
+	       COLOR_WHITE
+	       COLOR_BLACK
+	       stdscr)
 
 
 (progn
@@ -71,7 +84,7 @@ name, forward declaration and function code into *boiler-func*"
 		    (function main ((int argc) (char** argv)) -> int
 		      (comment "(void) argc;" :prefix "")
 		      (comment "(void) argv;" :prefix "")
-		    
+		      (funcall init)
 		      (return 0))) 
        do
 	 (simple-print e))))

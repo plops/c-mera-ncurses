@@ -1,2 +1,27 @@
+(in-package :cg-user)
+(switch-reader)
+
 (%function init () -> void
-	   )
+  (funcall initscr)
+  ;(funcall keypad stdscr true)
+  (funcall nonl)
+  (funcall cbreak)
+  (funcall echo)
+  (when (funcall has-colors)
+    (funcall start-color)
+    (funcall init-pair 1 COLOR_RED COLOR_BLACK)
+    (funcall init-pair 2 COLOR_GREEN COLOR_BLACK)
+    (funcall init-pair 3 COLOR_YELLOW COLOR_BLACK)
+    (funcall init-pair 4 COLOR_BLUE COLOR_BLACK)
+    (funcall init-pair 5 COLOR_CYAN COLOR_BLACK)
+    (funcall init-pair 6 COLOR_MAGENTA COLOR_BLACK)
+    (funcall init-pair 7 COLOR_WHITE COLOR_BLACK))
+  (decl ((int num))
+   (for (() () ())
+     (decl ((int c (funcall getch)))
+       (funcall attrset (funcall COLOR_PAIR (% num 8)))
+       (inc num)))
+   (funcall finish)))
+
+(%function finish () -> void
+  (funcall endwin))
