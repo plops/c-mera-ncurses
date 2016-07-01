@@ -3,7 +3,7 @@
 
 (%function init () -> void
   (funcall initscr)
-  ;(funcall keypad stdscr true)
+  (funcall keypad stdscr TRUE)
   (funcall nonl)
   (funcall cbreak)
   (funcall echo)
@@ -16,7 +16,7 @@
     (funcall init-pair 5 COLOR_CYAN COLOR_BLACK)
     (funcall init-pair 6 COLOR_MAGENTA COLOR_BLACK)
     (funcall init-pair 7 COLOR_WHITE COLOR_BLACK))
-  (decl ((int num))
+  (decl ((int num 0))
    (for (() () ())
      (decl ((int c (funcall getch)))
        (funcall attrset (funcall COLOR_PAIR (% num 8)))

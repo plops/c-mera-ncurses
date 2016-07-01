@@ -2,7 +2,7 @@
 (in-package :cg-user)
 (switch-reader)
 
-(defvar *boiler-func* nil)
+(defparameter *boiler-func* nil)
 
 (defmacro %function (name parameters -> type &body body)
   "This is a macro for defining the general helper functions. Push
@@ -63,7 +63,8 @@ name, forward declaration and function code into *boiler-func*"
 
 
 (progn
-    (load "boiler"))
+  ;(compile-file "boiler.lisp")
+  (load "boiler"))
 
 #+nil
 (let ()
